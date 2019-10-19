@@ -3,14 +3,9 @@ const path = require("path");
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const ejs = require("ejs");
 
-app.use(express.static(path.join(__dirname, "public")));
-app.set("views", path.join(__dirname, "views"));
-app.engine("ejs", ejs.renderFile);
-
-app.get("/", (req, res) => {
-  res.render("index.html.ejs");
+app.get("/messages", (req, res) => {
+  res.render();
 });
 
 io.on('connection', (socket) => {
