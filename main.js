@@ -60,6 +60,8 @@ io.on("connection", socket => {
   });
 });
 
-http.listen(3433, () => {
-  console.log("Server running at port 3433!");
+const port = process.env.PORT || 3433
+
+http.listen(port, () => {
+  console.log(`Server running at port ${port}!`);
 });
