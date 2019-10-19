@@ -1,12 +1,12 @@
 import React from "react";
-import styles from "./styles.css";
+import styles from "./Contacts.module.css";
 class Contacts extends React.Component {
   render() {
     return (
       <div className={styles.contactsContainer}>
         <div className={styles.contact}>
           <div className={styles.contactPhoto}>
-            <img src="/assets/images/codeby.jpg" />
+            <img src="/images/codeby.jpg" />
           </div>
           <div className={styles.contactDetails}>
             <div className={styles.contactName}>Codeby</div>
@@ -17,7 +17,7 @@ class Contacts extends React.Component {
         </div>
         <div className={styles.contact}>
           <div className={styles.contactPhoto}>
-            <img src="/assets/images/codeby.jpg" />
+            <img src="/images/codeby.jpg" />
           </div>
           <div className={styles.contactDetails}>
             <div className={styles.contactName}>Codeby</div>

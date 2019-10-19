@@ -3,16 +3,14 @@ import Header from './components/Header';
 import Contacts from './components/Contacts';
 import Messages from './components/Messages';
 import MessageInput from './components/MessageInput';
-import styles from "./App.css";
+import "./App.css";
 function App() {
   return (
     <React.Fragment>
       <Header />
       <Contacts />
-      <div className={styles.chatContainer}>
-        <Messages />
-        <MessageInput />
-      </div>
+      <Messages />
+      <MessageInput />
     </React.Fragment>
   );
 }

@@ -1,15 +1,12 @@
-
-.sendMessageContainer {
-  background: white;
-  padding: 10px;
-}
 .sendMessageContainer {
   background: #F8F8F8;
   border-left: 1px solid #eee;
   display: flex;
+  padding: 10px;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  right: 0;
+  width: 75%;
 }
 .sendMessageText {
   border: 1px solid #eee;
