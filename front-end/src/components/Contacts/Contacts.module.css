@@ -6,27 +6,3 @@
   height: 100vh;
   width: 25%;
 }
-.contactsContainer .contact {
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-  display: flex;
-  padding: 15px 10px;
-}
-.contactsContainer .contact:hover, .contactsContainer .contact.active {
-  background: #f2f2f2;
-}
-.contactsContainer .contact .contactPhoto img {
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-}
-.contactsContainer .contact .contactDetails {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 10px;
-}
-.contactsContainer .contact .contactDetails .contactLastMessageDate {
-  color: #666;
-  font-size: 14px;
-}

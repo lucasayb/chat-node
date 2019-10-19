@@ -1,0 +1,24 @@
+.contact {
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  display: flex;
+  padding: 15px 10px;
+}
+.contact:hover, .contact.active {
+  background: #f2f2f2;
+}
+.contact .contactPhoto img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+.contact .contactDetails {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 10px;
+}
+.contact .contactDetails .contactLastMessageDate {
+  color: #666;
+  font-size: 14px;
+}
