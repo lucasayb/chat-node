@@ -10,6 +10,7 @@ class MessageInput extends React.Component {
     const { message } = this.state;
     const { sendMessage } = this.props;
     sendMessage(message);
+    this.setState({ message: "" });
   };
 
   render() {

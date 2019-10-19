@@ -1,0 +1,28 @@
+.userSignIn {
+  padding: 5px 10px;
+}
+.field, .field input[type='text'], .field input[type='email'] {
+  width: 100%;
+}
+.field {
+  padding: 10px 0;
+  width: 300px;
+}
+.field input[type='text'], .field input[type='email'] {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 15px;
+}
+.actions {
+  padding: 10px 0;
+}
+.btn.btnPrimary {
+  background: #c4238e;
+  border: 1px solid #c4238e;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  width: 100%;
+}

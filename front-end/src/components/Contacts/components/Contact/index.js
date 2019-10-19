@@ -2,9 +2,14 @@ import React from "react";
 import styles from "./Contact.module.css";
 class Contact extends React.Component {
   render() {
-    const { image, createdAt, name } = this.props;
+    const { image, createdAt, name, active, selectChannel } = this.props;
     return (
-      <div className={styles.contact}>
+      <div
+        onClick={selectChannel}
+        className={
+          active ? [styles.contact, styles.active].join(" ") : styles.contact
+        }
+      >
         <div className={styles.contactPhoto}>
           <img src={image} />
         </div>

@@ -19,10 +19,7 @@ class MessagesProvider extends React.Component {
     messages: [],
     selectedChannel: {},
     loadingChannel: true,
-    user: {
-      email: "",
-      name: ""
-    }
+    user: undefined
   };
 
   componentDidMount() {
@@ -30,7 +27,7 @@ class MessagesProvider extends React.Component {
   }
 
   async componentDidUpdate() {
-    if (this.state.loadingChannel && this.state.connection) {
+    if (this.state.loadingChannel && this.state.connection && this.state.user) {
       this.setState({ loadingChannel: false });
       this.getChannels();
     }
@@ -39,6 +36,14 @@ class MessagesProvider extends React.Component {
   ioConnect = async () => {
     const connection = io(`http://localhost:3433`);
     this.setState({ connection });
+    connection.on("message", data => {
+      let messages = this.state.messages;
+      messages.push(data);
+      this.setState({ messages: messages });
+    });
+    connection.on("loadMessages", data => {
+      this.setState({ messages: data.messages });
+    });
   };
 
   getChannels = async () => {
@@ -53,42 +58,54 @@ class MessagesProvider extends React.Component {
   };
 
   selectChannel = id => {
+    if (this.state.selectedChannel) {
+      this.disconnectWithChannel(this.state.selectedChannel.id);
+    }
     let selectedChannel = this.state.channels.find(
       channel => channel.id === id
     );
-    const channel = `channel-${id}`;
-    selectedChannel = { ...selectedChannel, channelId: channel };
-    this.setState({ selectedChannel });
-    this.connectWithChannel(channel);
+    this.setState({ selectedChannel, messages: selectedChannel.messages });
+    this.connectWithChannel(selectedChannel.id);
   };
 
   connectWithChannel = channel => {
     const { connection } = this.state;
     connection.emit("subscribe", channel);
-    connection.on("message", data => {
-      console.log(data);
-    });
+  };
+
+  disconnectWithChannel = channel => {
+    const { connection } = this.state;
+    connection.emit("unsubscribe", channel);
+    connection.off('nessage');
   };
 
   sendMessage = message => {
-    const { connection } = this.state;
+    const { connection, user } = this.state;
     const { selectedChannel } = this.state;
     connection.emit("send", {
-      channel: selectedChannel.channelId,
-      message: message
+      channel: selectedChannel.id,
+      message: message,
+      user
     });
   };
 
+  setUser = user => {
+    this.setState({ user });
+  };
+
   render() {
-    const { channels, selectedChannel } = this.state;
+    const { user, channels, selectedChannel, messages } = this.state;
     const { children } = this.props;
     return (
       <MessagesContext.Provider
         value={{
+          messages,
+          user,
           channels,
           selectedChannel,
           sendMessage: this.sendMessage,
-          selectChannel: this.selectChannel
+          selectChannel: this.selectChannel,
+          setUser: this.setUser
         }}
       >
         {children}
