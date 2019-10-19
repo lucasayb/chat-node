@@ -6,7 +6,8 @@ class MessageInput extends React.Component {
     message: ""
   };
 
-  sendMessage = () => {
+  sendMessage = e => {
+    e.preventDefault();
     const { message } = this.state;
     const { sendMessage } = this.props;
     sendMessage(message);
@@ -17,21 +18,23 @@ class MessageInput extends React.Component {
     const { message } = this.state;
     return (
       <div className={styles.sendMessageContainer}>
-        <input
-          placeholder="Digite uma mensagem"
-          id="send-message-text"
-          className={styles.sendMessageText}
-          value={message}
-          onChange={e => this.setState({ message: e.target.value })}
-          type="text"
-        />
-        <button
-          id="send-button"
-          onClick={this.sendMessage}
-          className={[styles.btn, styles.btnSuccess].join(" ")}
-        >
-          <span>&raquo;</span>
-        </button>
+        <form onSubmit={this.sendMessage}>
+          <input
+            placeholder="Digite uma mensagem"
+            id="send-message-text"
+            className={styles.sendMessageText}
+            value={message}
+            onChange={e => this.setState({ message: e.target.value })}
+            autoComplete="off"
+            type="text"
+          />
+          <button
+            id="send-button"
+            className={[styles.btn, styles.btnSuccess].join(" ")}
+          >
+            <span>&raquo;</span>
+          </button>
+        </form>
       </div>
     );
   }

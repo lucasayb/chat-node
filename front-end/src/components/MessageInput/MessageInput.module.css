@@ -8,6 +8,10 @@
   right: 0;
   width: 75%;
 }
+.sendMessageContainer form {
+  display: flex;
+  width: 100%;
+}
 .sendMessageText {
   border: 1px solid #eee;
   border-radius: 25px;
