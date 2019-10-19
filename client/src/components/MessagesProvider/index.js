@@ -34,7 +34,7 @@ class MessagesProvider extends React.Component {
   }
 
   ioConnect = async () => {
-    const connection = io(`http://localhost:3433`);
+    const connection = io();
     this.setState({ connection });
     connection.on("message", data => {
       let messages = this.state.messages;
