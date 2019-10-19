@@ -8,7 +8,8 @@ class UserSignIn extends React.Component {
     email: ""
   };
 
-  setUser = () => {
+  setUser = e => {
+    e.preventDefault();
     const { name, email } = this.state;
     const { setUser } = this.props;
     setUser({ name, email });
@@ -18,37 +19,34 @@ class UserSignIn extends React.Component {
     const { name, email } = this.state;
     const { user } = this.props;
     if (user) {
-      return (
-        <React.Fragment></React.Fragment>
-      )
+      return <React.Fragment></React.Fragment>;
     }
     return (
       <Modal>
         <div className={styles.userSignIn}>
-          <div className={styles.field}>
-            <input
-              placeholder="Digite seu nome"
-              type="text"
-              onChange={e => this.setState({ name: e.target.value })}
-              value={name}
-            />
-          </div>
-          <div className={styles.field}>
-            <input
-              placeholder="Digite seu e-mail"
-              type="email"
-              value={email}
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-          </div>
-          <div className={styles.actions}>
-            <button
-              onClick={this.setUser}
-              className={[styles.btn, styles.btnPrimary].join(" ")}
-            >
-              Acessar chat
-            </button>
-          </div>
+          <form onSubmit={this.setUser}>
+            <div className={styles.field}>
+              <input
+                placeholder="Digite seu nome"
+                type="text"
+                onChange={e => this.setState({ name: e.target.value })}
+                value={name}
+              />
+            </div>
+            <div className={styles.field}>
+              <input
+                placeholder="Digite seu e-mail"
+                type="email"
+                value={email}
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+            </div>
+            <div className={styles.actions}>
+              <button className={[styles.btn, styles.btnPrimary].join(" ")}>
+                Acessar chat
+              </button>
+            </div>
+          </form>
         </div>
       </Modal>
     );
