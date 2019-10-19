@@ -11,3 +11,10 @@
   overflow-y: auto;
   z-index: 0;
 }
+.noMessagesContainer {
+  color: #666;
+  font-size: 12px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}

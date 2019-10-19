@@ -14,14 +14,20 @@ class Contacts extends React.Component {
 
     return (
       <div className={styles.contactsContainer}>
-        {channels.map((channel, key) => (
+        {channels.length ? (
+        channels.map((channel, key) => (
           <Contact
             selectChannel={() => this.selectChannel(channel)}
             active={channel.id === selectedChannel.id}
             key={key}
             {...channel}
           />
-        ))}
+        ))
+        ) : (
+          <div className={styles.channelsNotLoaded}>
+            Faça o login para ver a lista de salas disponíveis.
+          </div>
+        )}
       </div>
     );
   }

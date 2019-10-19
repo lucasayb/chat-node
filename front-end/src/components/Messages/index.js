@@ -7,9 +7,13 @@ class Messages extends React.Component {
     const { messages } = this.props;
     return (
       <div className={styles.messagesContainer}>
-        {messages.map(message => (
+        {messages.length ? (messages.map(message => (
           <Message message={message} />
-        ))}
+        ))) : (
+          <div className={styles.noMessagesContainer}>
+            Nenhuma mensagem para este canal
+          </div>
+        )}
       </div>
     );
   }
