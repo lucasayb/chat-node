@@ -1,0 +1,22 @@
+.messagesContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px 10px 10px;
+  width: 100%;
+}
+.message {
+  background: #e3afd2;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  margin: 15px 5px;
+}
+.message.yourMessage {
+  align-self: flex-end;
+  background: #edb7db;
+}
+.messageAuthor {
+  font-size: 12px;
+  margin-bottom: 5px;
+}

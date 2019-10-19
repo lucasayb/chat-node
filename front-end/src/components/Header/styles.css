@@ -1,0 +1,36 @@
+.chatHeader {
+  background: #F8F8F8;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+}
+.chatHeader .chatProfile {
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  width: 25%;
+}
+.chatHeader .chatProfile .chatProfilePhoto img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+.chatHeaderContactProfile {
+  align-items: center;
+  border-left: 1px solid #eee;
+  display: flex;
+  padding: 10px;
+  width: 75%;
+}
+.chatHeaderContactProfile .chatHeaderContactPhoto img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+.chatHeaderContactProfile .chatHeaderContactName {
+  padding: 0 10px;
+}

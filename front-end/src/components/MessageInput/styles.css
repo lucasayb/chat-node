@@ -1,0 +1,39 @@
+
+.sendMessageContainer {
+  background: white;
+  padding: 10px;
+}
+.sendMessageContainer {
+  background: #F8F8F8;
+  border-left: 1px solid #eee;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.sendMessageText {
+  border: 1px solid #eee;
+  border-radius: 25px;
+  height: 50px;
+  padding: 0 25px;
+  font-size: 16px;
+  width: 100%;
+}
+.btn.btnSuccess {
+  align-items: center;
+  background: #c4238e;
+  border: 1px solid #c4238e;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 25px;
+  line-height: 0;
+  justify-content: center;
+  margin-left: -50px;
+  height: 50px;
+  width: 50px;
+}
+.btn.btnSuccess:hover {
+  background: #da3ba5;
+}
