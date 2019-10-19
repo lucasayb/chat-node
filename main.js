@@ -1,9 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
 app.use(bodyParser.json());
 app.use(
   cors({
@@ -31,18 +35,20 @@ selectedChannel = channelId => {
   return channels.find(selectedChannel => selectedChannel.id === channelId);
 };
 
-app.get("/", (req, res) => {
-  res.send({ message: "Connected" });
-});
-
 app.get("/channels", (req, res) => {
   res.send(channels);
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
 io.on("connection", socket => {
   console.log("connection start", socket.id);
   socket.on("subscribe", channel => {
-    socket.emit("loadMessages", { messages: selectedChannel(channel).messages });
+    socket.emit("loadMessages", {
+      messages: selectedChannel(channel).messages
+    });
     console.log("joined channel", channel);
     socket.join(channel);
   });
@@ -60,7 +66,7 @@ io.on("connection", socket => {
   });
 });
 
-const port = process.env.PORT || 3433
+const port = process.env.PORT || 3433;
 
 http.listen(port, () => {
   console.log(`Server running at port ${port}!`);
