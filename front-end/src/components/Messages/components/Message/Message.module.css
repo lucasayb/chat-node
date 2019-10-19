@@ -1,5 +1,5 @@
 .message {
-  background: #e3afd2;
+  background: #008bea;
   border-radius: 5px;
   color: white;
   padding: 10px;
@@ -7,7 +7,7 @@
 }
 .message.yourMessage {
   align-self: flex-end;
-  background: #edb7db;
+  background: #48b6ff;
 }
 .messageAuthor {
   font-size: 12px;
